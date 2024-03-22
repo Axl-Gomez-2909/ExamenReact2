@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CategoryList from './components/CategoryList';
+import CategoryForm from './components/CategoryForm';
+import { Button } from 'react-bootstrap'; 
 
 function App() {
+  const [showAddModal, setShowAddModal] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Listado de Categorías</h1>
+      <Button variant="primary" onClick={() => setShowAddModal(true)} className="mb-3"><i className="bi bi-plus"></i> Agregar Categoría</Button>
+      <CategoryList />
+      <CategoryForm showModal={showAddModal} setShowModal={setShowAddModal} />
+      
     </div>
   );
 }
